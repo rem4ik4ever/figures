@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import Controls from "./components/Controls";
+import Figure from "./components/Figure";
+import { DrawProvider } from "./context";
 
-function App() {
+const Main = styled.div`
+  position: relative;
+  height: 100vh;
+`;
+
+const SvgBox = styled.div`
+  width: 400px;
+  height: 400px;
+  border: 1px solid #ccc;
+`;
+
+const ControlsContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid #ccc;
+  width: 270px;
+  height: 100%;
+`;
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DrawProvider>
+      <Main className="App">
+        <div>
+          <SvgBox>
+            <Figure />
+          </SvgBox>
+
+          <ControlsContainer>
+            <Controls />
+          </ControlsContainer>
+        </div>
+      </Main>
+    </DrawProvider>
   );
 }
-
-export default App;
